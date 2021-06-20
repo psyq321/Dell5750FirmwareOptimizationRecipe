@@ -93,12 +93,12 @@ echo "Please confirm that you have reviewed and approved every setting in this\
   script. Programming incorrect firmware NVRAM variables can result in errors\
   in operation, unbootable OS or, at worst, whole computer not powering up\
   and requiring hardware repair or motherboard replacement.\n
-  Proceed with caution!!! Continue ([y]es / [n]o)?"
+  Proceed with caution!!! Continue (Yes / No)?"
 
 select yn in "Yes" "No"; do
   case $yn in
-    Yes ) make install; break;;
-    No ) continue;;
+    Yes ) true;
+    No ) exit;
   esac
 done
 
