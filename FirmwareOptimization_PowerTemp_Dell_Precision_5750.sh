@@ -3,7 +3,8 @@
 ############################################################################
 #                                                                          #
 #       "Make Dell Precision 5750 (and, possibly, 2020 XPS 17) Cool"       #
-#              (Firmware Power and Temperature Optimizations)              #
+#               Firmware Power and Temperature Optimizations               #
+#                          (TL:DR - POKE Fest)                             #
 #                                                                          #
 # WARNING: FOR EXPERTS IN THE ART ONLY, PROVIDED STRICTLY AS GUIDANCE ON   #
 # ACHIEVING LOW POWER, LOW TEMPERATURES AND FULL (HW) S0iX STANDBY         #
@@ -69,8 +70,8 @@
 # about the same or similar >platform<). Here, you will just need to change
 # the location of the variable, for example:
 #
-# FROM:          setup_var PchSetup 0x123 0x45
-# TO:            setup_var PchSetup 0x678 0x9A
+#         FROM:    setup_var PchSetup 0x123 0x45
+#         TO:      setup_var PchSetup 0x678 0x9A
 #
 # If your system does not have the given setting, then it is likely that
 # your firmware cannot deal with it at all. Experts can analyze the
@@ -89,16 +90,18 @@
 #
 # Last Failsafe for non-experts and against accidental runs
 
-echo "Please confirm that you have reviewed and approved every setting in this\
-  script. Programming incorrect firmware NVRAM variables can result in errors\
-  in operation, unbootable OS or, at worst, whole computer not powering up\
-  and requiring hardware repair or motherboard replacement.\n
-  Proceed with caution!!! Continue (Yes / No)?"
+echo "Please confirm that you have reviewed and approved every setting in this script."
+echo "Programming incorrect firmware NVRAM variables can result in errors"
+echo "in operation, unbootable OS or, at worst, whole computer not powering up"
+echo "and requiring hardware repair or motherboard replacement."
+echo "Proceed with caution and on your risk!!!"
 
-select yn in "Yes" "No"; do
-  case $yn in
-    Yes ) true;
-    No ) exit;
+while true; do
+  read -p "Continue (Yes / No)?" yn
+    case $yn in
+      [Yy]* ) break;;
+      [Nn]* ) return;;
+      * ) echo "Please answer yes or no.";;
   esac
 done
 
@@ -548,6 +551,7 @@ setup_var PchSetup 0x8C  0x01        # Enabled
 
 
 ###################################################################################
+#                                                                                 #
 #           Power and Temperature Optimization Configuration (STEP 2)             #
 #                                                                                 #
 # Goal 1:  Properly unlock and configure firmware so that it can be managed       #
