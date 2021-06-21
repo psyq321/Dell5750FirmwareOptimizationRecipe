@@ -36,5 +36,4 @@ Finally, getting everything in order also means reaching advertised battery life
 
 And before you compare this with your latest and greatest thinner-than-razor Tiger Lake Ultrabook, please bear in mind that this is a mobile workstation we are talking about! This one, in particular, has an eight-core 5.1 GHz Intel Comet Lake CPU, NVIDIA RTX 3000 Quadro GPU, 64 GB of RAM, 2 SSDs, and a power-hungry 4K UHD display. Therefore, you must adjust expectations somewhat.
 
-(*) Not Tested, but systems are very similar.
-
+(*) Not Tested, but systems are very similar. 
