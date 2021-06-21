@@ -157,8 +157,10 @@ setup_var Setup 0x428 0x02          # USB Port 1 RTD3 Support: Super Speed
 setup_var Setup 0x429 0x02          # USB Port 2 RTD3 Support: Super Speed
 
 setup_var Setup 0x437 0x03          # Enable RTD3 Support for WWAN: Enabled
+setup_var Setup 0x522 0x01          # Enable RTD3 Support for TBT: Enabled
 setup_var Setup 0x684 0x01          # Enable RTD3 Support for BT: Enabled
-setup_var Setup 0x687 0x01          # Enable RTD3 Support for DG1: Enabled
+setup_var Setup 0x687 0x01          # Enable RTD3 Support for   : Enabled
+
 setup_var Setup 0x438 0x01          # Enable RTD3 Support for Sata Port 0: Enabled
 setup_var Setup 0x439 0x01          # Enable RTD3 Support for Sata Port 1: Enabled
 setup_var Setup 0x43A 0x01          # Enable RTD3 Support for Sata Port 2: Enabled
@@ -169,14 +171,14 @@ setup_var Setup 0x43D 0x01          # Enable RTD3 Support for Sata Port 5: Enabl
 #
 # Misc
 
-setup_var SaSetup 0x130  0x00      # ECC DRAM Support: Disabled
-                                   # NOTE: Obviously you do not want this if you
-                                   # ordered Inspirion 5750 with Xeon-W SKUs
-                                   # and with ECC RAM.
+setup_var SaSetup 0x130  0x00       # ECC DRAM Support: Disabled
+                                    # NOTE: Obviously you do not want this if you
+                                    # ordered Inspirion 5750 with Xeon-W SKUs
+                                    # and with ECC RAM.
 
-setup_var SaSetup 0xFF   0x00      # Disable IED (Intel Enhanced Debug)
-setup_var SaSetup 0x48   0x01      # iGFX PM Support: Enable
-setup_var SaSetup 0x12D  0x02      # Keep iGFX enabled based on setup options: Auto
+setup_var SaSetup 0xFF   0x00       # Disable IED (Intel Enhanced Debug)
+setup_var SaSetup 0x48   0x01       # iGFX PM Support: Enable
+setup_var SaSetup 0x12D  0x02       # Keep iGFX enabled based on setup options: Auto
 
 ########################################
 # Buses - Ensure ASPM and power gating #
@@ -187,6 +189,17 @@ setup_var SaSetup 0x12D  0x02      # Keep iGFX enabled based on setup options: A
 
 setup_var SaSetup 0x101   0x00      # DMI Max Link Speed: Auto
 setup_var SaSetup 0x123   0x03      # DMI ASPM: L0sL1
+
+###############
+# Thunderbolt #
+###############
+
+setup_var Setup 0x4cd     0x01      # Tbt Dynamic AC/DC L1: Enable
+setup_var Setup 0x4a6     0x00      # Wake from Thunderbolt: Disable
+setup_var Setup 0x4B5     0x03      # Enable ASPM: L0sL1
+setup_var Setup 0x4CB     0x03      # TBT Enable ASPM: L1.1 & L1.2
+
+setup_var PchSetup 0x3C7  0x01      # TODO
 
 ######################
 # PCIe Configuration #
@@ -199,13 +212,13 @@ setup_var SaSetup 0x123   0x03      # DMI ASPM: L0sL1
 #
 # PEG0 Port
 
-setup_var SaSetup 0x5D    0x02      # Enable: Auto
-setup_var SaSetup 0x61    0x00      # Max Link Speed: Auto
-setup_var SaSetup 0x69    0x01      # Power Down Unused Lanes: Auto
+setup_var SaSetup 0x5D    0x02       # Enable: Auto
+setup_var SaSetup 0x61    0x00       # Max Link Speed: Auto
+setup_var SaSetup 0x69    0x01       # Power Down Unused Lanes: Auto
 
-setup_var SaSetup 0x55    0x03      # ASPM: L0sL1
-setup_var SaSetup 0x59    0x03      # Enable L0s: Booth Root and Endpoint Ports
-setup_var SaSetup 0xD0    0x00      # PEG0 Hot Plug: Disable
+setup_var SaSetup 0x55    0x03       # ASPM: L0sL1
+setup_var SaSetup 0x59    0x03       # Enable L0s: Booth Root and Endpoint Ports
+setup_var SaSetup 0xD0    0x00       # PEG0 Hot Plug: Disable
 
 #
 # PEG1 Port
@@ -638,3 +651,5 @@ setup_var Setup 0x4D6    0x01       # ICC Watchdog: Enabled
 setup_var PchSetup 0x20  0x01       # WDT Enable: Enabled
                                     # (in case system freezes up because of voltage / freq mod, it reboots)
 
+
+setup_var Setup 0x3A8    0x01       # Intel Dynamic Tuning: Enable
