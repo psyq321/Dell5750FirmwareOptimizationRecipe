@@ -76,11 +76,11 @@ TBD
 
 **At this point, you shall:**
 
-- Obviously, ensure Windows is (still) booting :)
-- Check Device Manager for any signs of errors: if you see yellow bangs, likely, we went overboard with PCIe power management (ASPM)
-- Problem above is notoriously tricky, and of course, depends on the hardware downstream, so you will need to locate the actual port and modify ASPM
-- Validate that system is still S0 capable with = `powercfg -a'
-- Validate the system does not have any power management errors with `powercfg -energy` - in particular, we do not want to see ASPM errors, etc.
+- Ensure Windows is (still) booting :)
+- Check Device Manager for any signs of faults: if you see yellow bangs, likely, we went overboard with PCIe power management (ASPM)
+- The problem above is notoriously tricky, and of course, depends on the hardware downstream, so you will need to locate the actual port and modify ASPM
+- Validate that system is still S0 capable with = `powercfg -a`
+- Validate that the system does not have any power management errors with `powercfg -energy` - particularly, we do not want to see ASPM errors.
 - Over time, keep checking results of Sleep Studies (`powercfg -sleepstudy`) to ensure everything is "green" (no, really green - this is not a pun)
 
 If you are still stuck here, you might want to download **Intel Soc Watch** and start collecting and reviewing traces with excellent Intel VTune Amplifier (you can see the "good" results visualized in VTune below)
