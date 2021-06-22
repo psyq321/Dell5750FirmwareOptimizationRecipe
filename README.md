@@ -12,9 +12,11 @@ The image below is what I am getting while using an 8K monitor (requires forcing
 
 Ouch... then there is the whole problem of "Modern Standby", these are some extremes:
 
-- https://www.reddit.com/r/Dell/comments/miug49/brand_new_xps_17_sleeps_at_27_watts/  - Sleep with 27W...
+- https://www.reddit.com/r/Dell/comments/miug49/brand_new_xps_17_sleeps_at_27_watts/  - Sleep with 27W... really?
 
-My case was moderate, discharge rate was "just" 2,199 mW - enouh to deplete good chunk of the battery by morning. And that is on a good day. On a bad day it would just refuse to sleep, and would also randomly just go to full power while in backpack while becoming too hot to touch. People were "solving" this by forcing Windows to S3 standby regime, but since Windows 10 build 2004 this is not possible (no, alternative hack is just disabling S0iX). Even while this was possible, due to nobody caring about S3 anymore and testing, what you gained in standby, you would lose afterwards as CPU would lose ability to promote low-power C-states after resume.
+Again, I have no reason to believe this is just a Dell problem. Unfortunately, these systems are hit worst because they deviate from the "Reference Design" the most (so much more things could go bad) and contain the most power-hungry components from different IHVs. Furthermore, modern CPUs are extremely powerful: this Comet Lake system has `IccMax` of 155 A and can, for a short time shoot well past 100 W of power.
+
+My case was moderate: battery discharge rate was "just" 2,199 mW - enough to deplete a good chunk of the battery by morning. And that is on a good day. It would just refuse to sleep on a bad day and randomly go to full power while in the backpack while becoming too hot to touch. People were "solving" these problems by forcing Windows to the S3 standby regime. Still, since Windows 10 build 2004, this is impossible (no, an alternative registry hack is just disabling S0iX - it does not magically bring good old S3, for that one needs system firmware that cooperates). Even while this was possible, due to nobody caring about S3 anymore and testing it, what you gained in standby, you would lose soon after resume, as CPU would lose the ability to promote low-power C-states until the next reset.
 
 ![Alt text](/Demo/Original_PowerDrain1.jpg?raw=true)
 
@@ -26,7 +28,7 @@ OED Event 19 also affects other OEMs (google it), and apparently SoC vendor is a
 
 I would not be surprised if you stopped reading by now! But, worry not, we're going to fix ALL of this!
 
-**Yes, all of it:
+**Yes, all of it:**
 
 1. Frequent overheating and CPU throttling, especially if the system uses NVIDIA RTX GPU and outputs on, e.g., 8K display
 2. Inability to enter fully S0iX state ("Connected Standby") resulting either in a) no sleep or b) significant battery drain during "sleep"
