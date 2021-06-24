@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 
 @settings {
-  font-size: 100;
+  font-size: 75;
 }
